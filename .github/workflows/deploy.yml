@@ -64,7 +64,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           timeout: 180s
           script: |
-            sudo docker stop lirelivre
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/lirelivre-server
             docker run -d -p 80:8080 --name lirelivre ${{ secrets.DOCKER_USERNAME }}/lirelivre-server:latest
