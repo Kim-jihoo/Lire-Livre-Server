@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  lirelivre-database:
+    container_name: lirelivre-database
+    build:
+      dockerfile: Dockerfile
+      context: ./database
+    image: sieun06/lirelivre-database
+    environment:
+      - MARIADB_DATABASE=lirelivre
+      - MARIADB_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    volumes:
+      - ./database/config:/etc/mysql/conf.d
+    ports:
+      - "3306:3306"
+  lirelivre-app:
+    container_name: lirelivre-app
+    build: .
+    depends_on:
+      - lirelivre-database
+    image: sieun06/lirelivre-app
+    environment:
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+    ports:
+      - "8080:8080"
+    restart: always
+
