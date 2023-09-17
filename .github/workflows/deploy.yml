@@ -14,6 +14,7 @@ jobs:
 
       - name: yml 생성
         run: |
+          mkdir ./src/main/resources
           cd ./src/main/resources
           touch ./application.yml
 
