@@ -20,8 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_code")
 	private long userCode;
 
