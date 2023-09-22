@@ -12,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Getter
@@ -25,7 +25,7 @@ public class BookClubRecruit {
 	@Column(name = "club_recruit_id")
 	private long clubRecruitId;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_club_id")
 	private BookClub bookClubId;
 

@@ -31,4 +31,7 @@ public class UserLikeBook {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_id")
 	private Book bookId;
+
+	@Column(name = "is_deleted", nullable = false)
+	private Boolean isDeleted;
 }

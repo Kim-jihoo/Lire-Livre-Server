@@ -52,9 +52,6 @@ public class BookClub {
 	@Column(name = "book_club_region")
 	private String region;
 
-	@Column(name = "day_of_the_week")
-	private String dayOfTheWeek;
-
 	@Column(name = "is_private", nullable = false)
 	private Boolean isPrivate;
 

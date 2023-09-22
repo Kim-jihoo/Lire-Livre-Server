@@ -19,19 +19,15 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class UserLikeBookClub {
+public class BookClubWeek {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "like_club_id")
-	private long likeClubId;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_code")
-	private User userCode;
+	@Column(name = "week_id")
+	private long weekId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_club_id")
 	private BookClub bookClubId;
 
-	@Column(name = "is_deleted", nullable = false)
-	private Boolean isDeleted;
+	@Column(name = "week", nullable = false)
+	private String weekDay;
 }
