@@ -1,7 +1,7 @@
 package com.lirelivre.lirelivre;
 
 import com.lirelivre.lirelivre.domain.Book;
-import com.lirelivre.lirelivre.domain.BookCLub;
+import com.lirelivre.lirelivre.domain.BookClub;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,7 +30,7 @@ public class Meeting {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_club_id")
-	private BookCLub bookClubId;
+	private BookClub bookClubId;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_id")

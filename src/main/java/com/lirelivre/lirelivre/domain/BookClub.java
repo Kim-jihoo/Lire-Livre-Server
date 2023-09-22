@@ -21,7 +21,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookCLub {
+public class BookClub {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "book_club_id")
 	private long bookClubId;
