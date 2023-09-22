@@ -1,7 +1,5 @@
-package com.lirelivre.lirelivre;
+package com.lirelivre.lirelivre.domain;
 
-import com.lirelivre.lirelivre.domain.Book;
-import com.lirelivre.lirelivre.domain.BookClub;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
