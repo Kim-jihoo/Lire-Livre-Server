@@ -1,26 +1,27 @@
 package com.lirelivre.lirelivre.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+//import com.lirelivre.lirelivre.config.MemberProfile;
+import com.lirelivre.lirelivre.dto.UserDTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+
+import com.lirelivre.lirelivre.dto.UserLoginRequest;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+@Setter
 @Getter
-@Builder
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class User {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_code")
 	private long userCode;
 
@@ -51,4 +52,48 @@ public class User {
 	@CreatedDate
 	@Column(name = "created_at")
 	private LocalDateTime createdAt;
+
+/*
+@Getter
+public enum UserRole {
+	ADMIN("ROLE_ADMIN"),
+	USER("ROLE_USER");
+
+	UserRole(String value) {
+		this.value = value;
+	}
+
+	private String value;
+
+}*/
+	public User(String userId, String userPassword, String userEmail, String userName, String userNickName){
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userEmail = userEmail;
+		this.userName = userName;
+		this.userNickName = userNickName;
+	}
+	public User(UserDTO userDTO){
+		this.userId = userDTO.getUserId();
+		this.userPassword = userDTO.getUserPassword();
+		this.userEmail = userDTO.getUserEmail();
+		this.userName =userDTO.getUserName();
+		this.userNickName =userDTO.getUserNickName();
+	}
+
+	public User(String userId, String userPassword){
+		this.userId = userId;
+		this.userPassword = userPassword;
+	}
+	public User(UserLoginRequest userLoginRequest){
+		this.userId = userLoginRequest.getUserId();
+		this.userPassword = userLoginRequest.getUserPassword();
+	}
+	public User(String userId, String userPassword, String userEmail){
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userEmail = userEmail;
+	}
 }
+
+
