@@ -17,12 +17,8 @@ public class UserDTO {
 	private String userName;
 	private String userNickName;
 
-
 	public User toEntity(String userPassword) {
-
 		return new User(this.userId, userPassword, this.userEmail, this.userName, this.userNickName);
 	}
-
-
 }
 

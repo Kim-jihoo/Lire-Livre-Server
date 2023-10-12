@@ -27,23 +27,18 @@ public class UserService {
 		}
 		if (findId.isPresent()) {
 			throw new IllegalStateException("중복된 아이디");
-
 		}
-
 		userRepository.save(user);
 		return user;
 	}
 
 
 	public User login(User user) {
-
 		Optional<User> loginId = userRepository.findByUserId(user.getUserId());
 		if (loginId.isPresent()) { //존재하면 로그인 처리
 			return user;
 		}
 		throw new IllegalStateException("아이디가 없습니다");
-
 	}
-
 }
 

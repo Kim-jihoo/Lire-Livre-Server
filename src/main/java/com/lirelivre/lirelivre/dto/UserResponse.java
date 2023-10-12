@@ -10,10 +10,9 @@ import com.lirelivre.lirelivre.domain.User;
 public class UserResponse {
 	private String userId;
 	private String userEmail;
+
 	public UserResponse(User user) {
 		this.userId = user.getUserId();
 		this.userEmail = user.getUserEmail();
 	}
 }
-
-

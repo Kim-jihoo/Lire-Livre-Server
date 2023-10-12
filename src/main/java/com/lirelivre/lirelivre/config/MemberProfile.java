@@ -8,6 +8,7 @@ public class MemberProfile {
 	private final String oauthId;
 	private final String name;
 	private final String email;
+
 	public MemberProfile(String oauthId, String name, String email) {
 		this.oauthId = oauthId;
 		this.name = name;

@@ -17,18 +17,13 @@ import com.lirelivre.lirelivre.dto.UserLoginResponse;
 import com.lirelivre.lirelivre.dto.UserResponse;
 import com.lirelivre.lirelivre.service.UserService;
 
-
-
-import java.util.Optional;
-
-
 @RequestMapping("/api/users")
 @RestController
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
 
-	private final UserService userService; // 생성자 주입
+	private final UserService userService;
 	private final BCryptPasswordEncoder encoder;
 
 

@@ -10,9 +10,9 @@ import com.lirelivre.lirelivre.domain.User;
 public class UserLoginResponse {
 	private String userId;
 	private String userPassword;
+
 	public UserLoginResponse(User user) {
 		this.userId = user.getUserId();
 		this.userPassword = user.getUserPassword();
 	}
-
 }

@@ -16,6 +16,4 @@ public class UserLoginRequest {
 
 		return new User(userId, userPassword);
 	}
-
-
 }
