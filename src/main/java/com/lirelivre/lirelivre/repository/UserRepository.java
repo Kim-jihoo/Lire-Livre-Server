@@ -9,12 +9,8 @@ import com.lirelivre.lirelivre.domain.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
 	Optional<User> findByUserEmail(String UserEmail);
-
 	Optional<User> findByUserId(String UserId);
-
-
 }
 
 
