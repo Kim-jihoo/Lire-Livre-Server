@@ -1,8 +1,8 @@
 package com.lirelivre.lirelivre.dto;
 
-import com.lirelivre.lirelivre.domain.User;
 import lombok.*;
 
+import com.lirelivre.lirelivre.domain.User;
 
 @Getter
 @AllArgsConstructor
@@ -18,7 +18,7 @@ public class UserDTO {
 	private String userNickName;
 
 
-	public User toEntity(String userPassword){
+	public User toEntity(String userPassword) {
 
 		return new User(this.userId, userPassword, this.userEmail, this.userName, this.userNickName);
 	}

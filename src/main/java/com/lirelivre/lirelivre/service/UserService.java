@@ -1,15 +1,15 @@
 package com.lirelivre.lirelivre.service;
 
-
-
-import com.lirelivre.lirelivre.domain.User;
-import com.lirelivre.lirelivre.dto.UserDTO;
-import com.lirelivre.lirelivre.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
+
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.stereotype.Service;
+
+import com.lirelivre.lirelivre.domain.User;
+import com.lirelivre.lirelivre.repository.UserRepository;
 
 
 @Service

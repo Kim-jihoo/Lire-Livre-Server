@@ -1,9 +1,8 @@
-
 package com.lirelivre.lirelivre.config;
 
 import java.util.Arrays;
-import java.util.Map;
 import java.util.function.Function;
+import java.util.Map;
 
 public enum OAuthAttributes {
 	NAVER("naver", attributes -> {
@@ -23,9 +22,9 @@ public enum OAuthAttributes {
 			(String) kakaoAccount.get("id"),
 			(String) profile.get("name"),
 			(String) kakaoAccount.get("email")
-		//	(String) profile.get("profile_image_url")
 		);
 	});
+
 	private final String registrationId;
 	private final Function<Map<String, Object>, MemberProfile> userProfileFactory;
 

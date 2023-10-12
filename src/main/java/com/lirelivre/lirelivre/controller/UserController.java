@@ -1,5 +1,14 @@
 package com.lirelivre.lirelivre.controller;
 
+import lombok.extern.slf4j.Slf4j;
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.lirelivre.lirelivre.domain.User;
 import com.lirelivre.lirelivre.dto.UserDTO;
@@ -7,12 +16,8 @@ import com.lirelivre.lirelivre.dto.UserLoginRequest;
 import com.lirelivre.lirelivre.dto.UserLoginResponse;
 import com.lirelivre.lirelivre.dto.UserResponse;
 import com.lirelivre.lirelivre.service.UserService;
-import com.nimbusds.oauth2.sdk.Response;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+
+
 
 import java.util.Optional;
 
@@ -28,11 +33,10 @@ public class UserController {
 
 
 	@PostMapping("/join")
-	public ResponseEntity<UserResponse> join(@RequestBody UserDTO userDTO){
+	public ResponseEntity<UserResponse> join(@RequestBody UserDTO userDTO) {
 		if (!userDTO.getUserPassword().equals(userDTO.getUser2Password())) {
 			throw new IllegalStateException("비밀번호 불일치");
 		}
-
 		User join = userService.join(userDTO.toEntity(encoder.encode(userDTO.getUserPassword())));
 		UserResponse userResponse = new UserResponse(join);
 		return ResponseEntity.ok(userResponse);
