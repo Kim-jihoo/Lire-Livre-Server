@@ -1,19 +1,24 @@
 package com.lirelivre.lirelivre.domain;
 
-import lombok.*;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.lirelivre.lirelivre.dto.UserDTO;
 import com.lirelivre.lirelivre.dto.UserLoginRequest;
+
 @Setter
 @Getter
-//@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class User {
