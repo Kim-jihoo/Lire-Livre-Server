@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Getter
@@ -18,19 +17,22 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookClubMember {
+public class BookReview {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BOOK_CLUB_MEMBER_ID")
-	private Long bookClubMemberId;
+	@Column(name = "BOOK_REVIEW_ID")
+	private Long bookReviewId;
 
 	@ManyToOne
-	@JoinColumn(name = "USER_ID")
+	@Column(name = "USER_ID")
 	private User user;				// 유저 ID
 
 	@ManyToOne
-	@JoinColumn(name = "BOOK_CLUB_ID")
-	private BookClub bookClubId;	// 독서모임 ID
+	@Column(name = "BOOK_ID")
+	private Book book;				// 도서 ID
 
-	@Column(name = "IS_CHIEF", nullable = false)
-	private boolean isChief;		// 관리자 여부
+	@Column(name = "REVIEW_SCORE", nullable = false)
+	private int reviewScore;		// 리뷰 점수
+
+	@Column(name = "REVIEW_CONTENT", length = 300)
+	private String reviewContent;	// 리뷰 내용
 }

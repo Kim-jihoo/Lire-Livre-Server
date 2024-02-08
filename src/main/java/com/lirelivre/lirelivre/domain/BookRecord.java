@@ -7,13 +7,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Getter
@@ -23,26 +21,23 @@ import java.util.Date;
 @Entity
 public class BookRecord {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "book_record_id")
-	private long bookRecordId;
+	@Column(name = "BOOK_RECORD_ID")
+	private Long bookRecordId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_code")
-	private User userId;
+	@ManyToOne
+	@JoinColumn(name = "USER_ID")
+	private User userId;			// 유저 ID
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_id")
-	private Book bookId;
+	@ManyToOne
+	@JoinColumn(name = "BOOK_ID")
+	private Book bookId;			// 도서 ID
 
-	@Column(name = "book_record_content")
-	private String content;
+	@Column(name = "RECORD_START_DATE", nullable = false)
+	private Date recordStartDate;	// 독서 시작일
 
-	@Column(name = "read_start_date", nullable = false)
-	private Date readStartDate;
+	@Column(name = "RECORD_END_DATE")
+	private Date recordEndDate;		// 독서 종료일
 
-	@Column(name = "read_end_date")
-	private Date readEndDate;
-
-	@Column(name = "review_score")
-	private int reviewScore;
+	@Column(name = "RECORD_SCORE")
+	private int recordScore;		// 점수
 }

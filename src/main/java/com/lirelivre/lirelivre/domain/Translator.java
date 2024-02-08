@@ -10,27 +10,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookClubMember {
+public class Translator {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BOOK_CLUB_MEMBER_ID")
-	private Long bookClubMemberId;
+	@Column(name = "TRANSLATOR_ID")
+	private Long translatorId;
 
-	@ManyToOne
-	@JoinColumn(name = "USER_ID")
-	private User user;				// 유저 ID
-
-	@ManyToOne
-	@JoinColumn(name = "BOOK_CLUB_ID")
-	private BookClub bookClubId;	// 독서모임 ID
-
-	@Column(name = "IS_CHIEF", nullable = false)
-	private boolean isChief;		// 관리자 여부
+	@Column(name = "TRANSLATOR_NAME", nullable = false)
+	private String translatorName;		// 번역가 이름
 }

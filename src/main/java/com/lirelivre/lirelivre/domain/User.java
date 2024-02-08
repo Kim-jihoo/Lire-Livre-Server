@@ -1,6 +1,5 @@
 package com.lirelivre.lirelivre.domain;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -9,83 +8,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
-import com.lirelivre.lirelivre.dto.UserDTO;
-import com.lirelivre.lirelivre.dto.UserLoginRequest;
-
-@Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_code")
-	private long userCode;
+	@Column(name = "USER_ID")
+	private Long userId;
 
-	@Column(name = "user_id", nullable = false)
-	private String userId;
+	@Column(name = "USER_NAME", nullable = false)
+	private String userName;				// 회원 ID(로그인 시 사용)
 
-	@Column(name = "user_name", nullable = false)
-	private String userName;
+	@Column(name = "USER_PASSWORD", nullable = false)
+	private String userPassword;			// 비밀번호
 
-	@Column(name = "user_password", nullable = false)
-	private String userPassword;
+	@Column(name = "USER_NICKNAME", nullable = false)
+	private String userNickName;			// 닉네임
 
-	@Column(name = "user_nickname", nullable = false)
-	private String userNickName;
-
-	@Column(name = "user_email", nullable = false)
-	private String userEmail;
-
-	@Column(name = "user_birthday")
-	private LocalDate userBirthDay;
-
-	@Column(name = "user_gender")
-	private String userGender;
-
-	@Column(name = "user_address")
-	private String userAddress;
+	@Column(name = "USER_EMAIL", nullable = false)
+	private String userEmail;				// 이메일
 
 	@CreatedDate
-	@Column(name = "created_at")
-	private LocalDateTime createdAt;
-
-	public User(String userId, String userPassword, String userEmail, String userName, String userNickName) {
-		this.userId = userId;
-		this.userPassword = userPassword;
-		this.userEmail = userEmail;
-		this.userName = userName;
-		this.userNickName = userNickName;
-	}
-
-	public User(UserDTO userDTO) {
-		this.userId = userDTO.getUserId();
-		this.userPassword = userDTO.getUserPassword();
-		this.userEmail = userDTO.getUserEmail();
-		this.userName =userDTO.getUserName();
-		this.userNickName =userDTO.getUserNickName();
-	}
-
-	public User(String userId, String userPassword) {
-		this.userId = userId;
-		this.userPassword = userPassword;
-	}
-
-	public User(UserLoginRequest userLoginRequest) {
-		this.userId = userLoginRequest.getUserId();
-		this.userPassword = userLoginRequest.getUserPassword();
-	}
-
-	public User(String userId, String userPassword, String userEmail) {
-		this.userId = userId;
-		this.userPassword = userPassword;
-		this.userEmail = userEmail;
-	}
+	@Column(name = "CREATED_AT")
+	private LocalDateTime createdAt;		// 가입 일자
 }
-
-

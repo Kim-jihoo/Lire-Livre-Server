@@ -18,10 +18,10 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookClubMember {
+public class StaredBookClub {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BOOK_CLUB_MEMBER_ID")
-	private Long bookClubMemberId;
+	@Column(name = "STARED_BOOK_CLUB_ID")
+	private Long staredBookClubId;
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
@@ -29,8 +29,5 @@ public class BookClubMember {
 
 	@ManyToOne
 	@JoinColumn(name = "BOOK_CLUB_ID")
-	private BookClub bookClubId;	// 독서모임 ID
-
-	@Column(name = "IS_CHIEF", nullable = false)
-	private boolean isChief;		// 관리자 여부
+	private BookClub bookClub;		// 독서모임 ID
 }

@@ -12,25 +12,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookClubMember {
+public class Bookcase {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BOOK_CLUB_MEMBER_ID")
-	private Long bookClubMemberId;
+	@Column(name = "BOOKCASE_ID")
+	private Long bookcaseId;
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
 	private User user;				// 유저 ID
 
-	@ManyToOne
-	@JoinColumn(name = "BOOK_CLUB_ID")
-	private BookClub bookClubId;	// 독서모임 ID
+	@Column(name = "BOOKCASE_NAME", length = 100, nullable = false)
+	private String bookcaseName;	// 책장 이름
 
-	@Column(name = "IS_CHIEF", nullable = false)
-	private boolean isChief;		// 관리자 여부
+	@OneToMany(mappedBy = "book")
+	private List<Book> books = new ArrayList<>();	// 도서 목록
 }

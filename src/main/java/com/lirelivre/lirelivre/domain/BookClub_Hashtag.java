@@ -18,19 +18,16 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookClubMember {
+public class BookClub_Hashtag {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BOOK_CLUB_MEMBER_ID")
-	private Long bookClubMemberId;
-
-	@ManyToOne
-	@JoinColumn(name = "USER_ID")
-	private User user;				// 유저 ID
+	@Column(name = "BOOK_CLUB_HASHTAG")
+	private Long bookClubHashtagId;
 
 	@ManyToOne
 	@JoinColumn(name = "BOOK_CLUB_ID")
-	private BookClub bookClubId;	// 독서모임 ID
+	private BookClub bookClub;		// 독서모임 ID
 
-	@Column(name = "IS_CHIEF", nullable = false)
-	private boolean isChief;		// 관리자 여부
+	@ManyToOne
+	@JoinColumn(name = "HASHTAG_ID")
+	private Hashtag hashtag;		// 해시태그 ID
 }

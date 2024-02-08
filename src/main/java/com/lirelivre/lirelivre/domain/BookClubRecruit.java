@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -22,19 +21,22 @@ import java.util.Date;
 @Entity
 public class BookClubRecruit {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "club_recruit_id")
-	private long clubRecruitId;
+	@Column(name = "CLUB_RECRUIT_ID")
+	private Long clubRecruitId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_club_id")
-	private BookClub bookClubId;
+	@ManyToOne
+	@JoinColumn(name = "BOOK_CLUB_ID")
+	private BookClub bookClubId;				// 독서모임 ID
 
-	@Column(name = "recruit_date")
-	private Date recruitDate;
+	@Column(name = "START_DATE", nullable = false)
+	private LocalDateTime recruitStartDate;		// 모집 시작 날짜
 
-	@Column(name = "min_num_of_recruit")
-	private int minNumOfRecruit;
+	@Column(name = "END_DATE")
+	private LocalDateTime recruitEndDate;		// 모집 마감 날짜
 
-	@Column(name = "max_num_of_recruit")
-	private int maxNumOfRecruit;
+	@Column(name = "MIN_NUM_OF_RECRUIT", nullable = false)
+	private int minNumOfRecruit;				// 최소 모집 인원
+
+	@Column(name = "MAX_NUM_OF_RECRUIT")
+	private int maxNumOfRecruit;				// 최대 모집 인원
 }
