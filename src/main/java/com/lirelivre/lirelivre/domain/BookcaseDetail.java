@@ -5,7 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Builder
@@ -18,7 +24,7 @@ public class BookcaseDetail {
 	private Long bookcaseDetailId;
 
 	@ManyToOne
-	@Column(name = "BOOKCASE_ID")
+	@JoinColumn(name = "BOOKCASE_ID")
 	private Bookcase bookcase;		// 책장 ID
 
 	@ManyToOne

@@ -33,6 +33,6 @@ public class Bookcase {
 	@Column(name = "BOOKCASE_NAME", length = 100, nullable = false)
 	private String bookcaseName;	// 책장 이름
 
-	@OneToMany(mappedBy = "book")
+	@OneToMany(mappedBy = "bookId")
 	private List<Book> books = new ArrayList<>();	// 도서 목록
 }
