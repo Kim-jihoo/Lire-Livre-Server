@@ -23,11 +23,11 @@ public class BookReview {
 	private Long bookReviewId;
 
 	@ManyToOne
-	@Column(name = "USER_ID")
+	@JoinColumn(name = "USER_ID")
 	private User user;				// 유저 ID
 
 	@ManyToOne
-	@Column(name = "BOOK_ID")
+	@JoinColumn(name = "BOOK_ID")
 	private Book book;				// 도서 ID
 
 	@Column(name = "REVIEW_SCORE", nullable = false)

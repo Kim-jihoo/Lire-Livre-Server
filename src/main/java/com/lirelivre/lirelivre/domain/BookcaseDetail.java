@@ -18,7 +18,7 @@ public class BookcaseDetail {
 	private Long bookcaseDetailId;
 
 	@ManyToOne
-	@Column(name = "BOOKCASE_ID")
+	@JoinColumn(name = "BOOKCASE_ID")
 	private Bookcase bookcase;		// 책장 ID
 
 	@ManyToOne
