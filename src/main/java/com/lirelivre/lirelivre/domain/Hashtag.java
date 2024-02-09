@@ -16,11 +16,11 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Category {
+public class Hashtag {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CATEGORY_ID")
-	private Long categoryId;
+	@Column(name = "HASHTAG")
+	private Long hashtagId;
 
-	@Column(name = "CATEGORY_NAME", nullable = false)
-	private String categoryName;		// 카테고리 이름
+	@Column(name = "HASHTAG_NAME", nullable = false, length = 50)
+	private String hashtagName;		// 해시태그 내용
 }

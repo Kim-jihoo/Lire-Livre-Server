@@ -7,32 +7,32 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookClubParticipant {
+public class BookReview {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "club_participant")
-	private long clubParticipant;
+	@Column(name = "BOOK_REVIEW_ID")
+	private Long bookReviewId;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_code")
-	private User userCode;
+	@ManyToOne
+	@Column(name = "USER_ID")
+	private User user;				// 유저 ID
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_club_id")
-	private BookClub bookClubId;
+	@ManyToOne
+	@Column(name = "BOOK_ID")
+	private Book book;				// 도서 ID
 
-	@Column(name = "is_chief", nullable = false)
-	private Boolean isChief;
+	@Column(name = "REVIEW_SCORE", nullable = false)
+	private int reviewScore;		// 리뷰 점수
+
+	@Column(name = "REVIEW_CONTENT", length = 300)
+	private String reviewContent;	// 리뷰 내용
 }

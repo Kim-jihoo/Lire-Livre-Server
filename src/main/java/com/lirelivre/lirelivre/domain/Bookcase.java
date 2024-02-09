@@ -7,31 +7,32 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class UserLikeBook {
+public class Bookcase {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "like_book_id")
-	private long likeBookId;
+	@Column(name = "BOOKCASE_ID")
+	private Long bookcaseId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_code")
-	private User userId;
+	@ManyToOne
+	@JoinColumn(name = "USER_ID")
+	private User user;				// 유저 ID
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_id")
-	private Book bookId;
+	@Column(name = "BOOKCASE_NAME", length = 100, nullable = false)
+	private String bookcaseName;	// 책장 이름
 
-	@Column(name = "is_deleted", nullable = false)
-	private Boolean isDeleted;
+	@OneToMany(mappedBy = "book")
+	private List<Book> books = new ArrayList<>();	// 도서 목록
 }

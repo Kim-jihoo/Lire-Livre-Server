@@ -16,11 +16,11 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Category {
+public class Translator {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CATEGORY_ID")
-	private Long categoryId;
+	@Column(name = "TRANSLATOR_ID")
+	private Long translatorId;
 
-	@Column(name = "CATEGORY_NAME", nullable = false)
-	private String categoryName;		// 카테고리 이름
+	@Column(name = "TRANSLATOR_NAME", nullable = false)
+	private String translatorName;		// 번역가 이름
 }

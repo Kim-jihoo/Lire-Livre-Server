@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,15 +18,16 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookClubWeek {
+public class BookPublisher {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "week_id")
-	private long weekId;
+	@Column(name = "BOOK_PUBLISHER_ID")
+	private Long bookPublisherId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_club_id")
-	private BookClub bookClubId;
+	@ManyToOne
+	@JoinColumn(name = "BOOK_ID")
+	private Book book;				// 도서 ID
 
-	@Column(name = "week", nullable = false)
-	private String weekDay;
+	@ManyToOne
+	@JoinColumn(name = "PUBLISHER_ID")
+	private Publisher publisher;	// 출판사 ID
 }

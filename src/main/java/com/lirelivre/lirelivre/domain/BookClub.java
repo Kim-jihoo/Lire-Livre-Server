@@ -8,12 +8,9 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Getter
@@ -23,38 +20,34 @@ import java.util.Date;
 @Entity
 public class BookClub {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "book_club_id")
-	private long bookClubId;
+	@Column(name = "BOOK_CLUB_ID")
+	private Long bookClubId;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id")
-	private Category categoryId;
+	@Column(name = "BOOK_CLUB_NAME", nullable = false)
+	private String bookClubName;			// 독서모임 이름
 
-	@Column(name = "book_club_image_url")
-	private String bookClubImageUrl;
+	@Column(name = "BOOK_CLUB_DETAIL", length = 500)
+	private String bookClubDetail;			// 독서모임 소개
 
-	@Column(name = "book_club_name", nullable = false)
-	private String bookClubName;
+	@Column(name = "BOOK_CLUB_INTRODUCTION", length = 2000)
+	private String bookClubIntroduction;	// 독서모임 상세
 
-	@Column(name = "book_club_explanation")
-	private String bookClubExplanation;
-
-	@Column(name = "book_club_detail")
-	private String bookClubDetail;
+	@Column(name = "BOOK_CLUB_REGION", nullable = false)
+	private String region;					// 독서모임 지역
 
 	@CreatedDate
-	@Column(name = "book_club_created_at", nullable = false)
-	private Date bookClubCreatedAt;
+	@Column(name = "BOOK_CLUB_CREATED_AT", nullable = false)
+	private Date bookClubCreatedAt;			// 독서모임 생성일
 
-	@Column(name = "is_online", nullable = false)
-	private Boolean isOnline;
+	@Column(name = "IS_DONE", nullable = false)
+	private boolean isDone;					// 종료 여부
 
-	@Column(name = "book_club_region")
-	private String region;
+	@Column(name = "IS_PRIVATE", nullable = false)
+	private boolean isPrivate;				// 공개 여부
 
-	@Column(name = "is_private", nullable = false)
-	private Boolean isPrivate;
+	@Column(name = "IS_ONLINE", nullable = false)
+	private boolean isOnline;				// 온라인 여부
 
-	@Column(name = "book_club_password")
-	private String bookClubPassword;
+	@Column(name = "BOOK_CLUB_PASSWORD")
+	private String bookClubPassword;		// 패스워드
 }

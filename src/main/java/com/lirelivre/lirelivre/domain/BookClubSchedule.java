@@ -12,32 +12,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookRecord {
+public class BookClubSchedule {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BOOK_RECORD_ID")
-	private Long bookRecordId;
+	@Column(name = "SCHEDULE_ID")
+	private Long scheduleId;
 
 	@ManyToOne
-	@JoinColumn(name = "USER_ID")
-	private User userId;			// 유저 ID
+	@JoinColumn(name = "BOOK_CLUB_ID")
+	private BookClub bookClubId;		// 독서 모임 ID
 
-	@ManyToOne
-	@JoinColumn(name = "BOOK_ID")
-	private Book bookId;			// 도서 ID
+	@Column(name = "SCHEDULE_TITLE", nullable = false, length = 200)
+	private String scheduleTitle;		// 일정 제목
 
-	@Column(name = "RECORD_START_DATE", nullable = false)
-	private Date recordStartDate;	// 독서 시작일
+	@Column(name = "SCHEDULE_CONTENT", nullable = false, length = 1000)
+	private String scheduleContent;		// 일정 내용
 
-	@Column(name = "RECORD_END_DATE")
-	private Date recordEndDate;		// 독서 종료일
-
-	@Column(name = "RECORD_SCORE")
-	private int recordScore;		// 점수
+	@Column(name = "SCHEDULE_DATE")
+	private LocalDateTime scheduleDate;	// 일정 날짜
 }

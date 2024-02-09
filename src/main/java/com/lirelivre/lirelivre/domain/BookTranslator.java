@@ -7,29 +7,27 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class FavoriteCategory {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "favorite_category_id")
-	private long favoriteCategoryId;
+public class BookTranslator {
+	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "BOOK_TRANSLATOR_ID")
+	private Long bookTranslatorId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_code")
-	private User userId;
+	@ManyToOne
+	@JoinColumn(name = "BOOK_ID")
+	private Book book;					// 도서 ID
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id")
-	private Category categoryId;
+	@ManyToOne
+	@JoinColumn(name = "TRANSLATOR_ID")
+	private Translator translator;		// 번역가 ID
 }
